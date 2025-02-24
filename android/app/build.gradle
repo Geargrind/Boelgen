@@ -84,9 +84,9 @@ android {
     ndkVersion rootProject.ext.ndkVersion
 
     buildToolsVersion rootProject.ext.buildToolsVersion
-    compileSdk rootProject.ext.compileSdkVersion
+    compileSdkVersion rootProject.ext.compileSdkVersion
 
-    namespace "com.blgen"
+    namespace "com.boelgen"
     defaultConfig {
         applicationId 'com.boelgen.app'
         minSdkVersion rootProject.ext.minSdkVersion
