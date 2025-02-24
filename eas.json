@@ -2,9 +2,15 @@
   "build": {
     "preview": {
       "android": {
-        "buildType": "apk"
+        "buildType": "apk",
+        "gradleCommand": "clean :app:assembleRelease"
       }
     },
-    "production": {}
+    "production": {
+      "android": {
+        "buildType": "apk",
+        "gradleCommand": "clean :app:assembleRelease"
+      }
+    }
   }
 }
