@@ -6,11 +6,13 @@
         {
           "icon": "./assets/notification-icon.png",
           "color": "#ffffff",
-          "sounds": ["./assets/notification-sound.wav"]
+          "sounds": [
+            "./assets/notification-sound.wav"
+          ]
         }
       ]
     ],
-    "name": "App2",
+    "name": "Bølgen",
     "slug": "App2",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -23,18 +25,36 @@
       "backgroundColor": "#ffffff"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "buildNumber": "1.0.0"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
+      },
+      "packageName": "com.geargrind.boelgen",
+      "versionCode": 1,
+      "package": "com.boelgen.app"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "d49427f1-5f20-4633-ba6b-6afdc9117d21"
       }
-    },
-    "web": {
-      "favicon": "./assets/favicon.png"
-    },
-    "useNextNotificationsApi": true,
-    "googleServicesFile": "./google-services.json"
+    }
+  },
+  "web": {
+    "favicon": "./assets/favicon.png"
+  },
+  "useNextNotificationsApi": true,
+  "googleServicesFile": "./google-services.json",
+  "extra": {
+    "eas": {
+      "projectId": "App2"
+    }
+  },
+  "owner": "geargrind",
+  "cli": {
+    "appVersionSource": "local"
   }
 }
