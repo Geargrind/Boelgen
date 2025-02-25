@@ -39,3 +39,11 @@ allprojects {
         maven { url 'https://www.jitpack.io' }
     }
 }
+
+android {
+    // ...
+    aaptOptions {
+        ignoreAssetsPattern "!*.webp:!*.png"  // Ignorer én af filtyperne
+        additionalParameters "--no-version-vectors"  // Forhindr duplikerede vektorfiler
+    }
+}
