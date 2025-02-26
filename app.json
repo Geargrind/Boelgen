@@ -15,7 +15,7 @@
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
-    "newArchEnabled": true,
+    "newArchEnabled": false,
     "splash": {
       "image": "./assets/splash-icon.png",
       "resizeMode": "contain",
@@ -30,8 +30,11 @@
         "foregroundImage": "./assets/adaptive-icon-foreground.png",
         "backgroundImage": "./assets/adaptive-icon-background.png"
       },
-      "packageName": "com.geargrind.boelgen",
-      "versionCode": 1
+      "package": "com.boelgen.app",
+      "versionCode": 1,
+      "compileSdkVersion": 34,
+      "targetSdkVersion": 34,
+      "buildToolsVersion": "34.0.0"
     },
     "extra": {
       "eas": {
@@ -42,8 +45,7 @@
   "web": {
     "favicon": "./assets/favicon.png"
   },
-  "useNextNotificationsApi": true,
-  "googleServicesFile": "./google-services.json",
+
   "owner": "geargrind",
   "cli": {
     "appVersionSource": "local"

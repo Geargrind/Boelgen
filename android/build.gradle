@@ -2,12 +2,22 @@ apply plugin: "com.android.application"
 apply plugin: "org.jetbrains.kotlin.android"
 apply plugin: "com.facebook.react"
 
+buildscript {
+    ext {
+        compileSdkVersion = 34
+        targetSdkVersion = 34
+        minSdkVersion = 23
+        buildToolsVersion = "34.0.0"
+        ndkVersion = "26.2.11394342"
+    }
+}
+
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
     ndkVersion rootProject.ext.ndkVersion
 
     defaultConfig {
-        applicationId "com.boelgen.app" // Ensure this matches your package name
+        applicationId "com.boelgen.app"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
