@@ -1,19 +1,28 @@
 {
   "build": {
-    "preview": {
+    "development": {
+      "distribution": "internal",
       "android": {
-        "buildType": "apk",
-        "gradleCommand": ":app:assembleRelease"
+        "gradleCommand": ":app:assembleDebug",
+        "buildType": "apk"
+      }
+    },
+    "preview": {
+      "distribution": "internal",
+      "android": {
+        "buildType": "apk"
       }
     },
     "production": {
       "android": {
-        "buildType": "apk",
-        "gradleCommand": ":app:assembleRelease"
+        "buildType": "app-bundle",
+        "env": {
+          "JAVA_HOME": "/usr/lib/jvm/java-17-openjdk-amd64"
+        }
       }
     }
   },
   "cli": {
-    "appVersionSource": "local"
+    "version": ">=0.64.0"
   }
 }
