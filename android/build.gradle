@@ -2,12 +2,11 @@
 
 buildscript {
     ext {
-        buildToolsVersion = findProperty('android.buildToolsVersion') ?: '35.0.0'
+        buildToolsVersion = findProperty('android.buildToolsVersion') ?: '34.0.0' // Neddroslet version
         minSdkVersion = Integer.parseInt(findProperty('android.minSdkVersion') ?: '24')
-        compileSdkVersion = Integer.parseInt(findProperty('android.compileSdkVersion') ?: '35')
+        compileSdkVersion = Integer.parseInt(findProperty('android.compileSdkVersion') ?: '34') // Neddroslet version
         targetSdkVersion = Integer.parseInt(findProperty('android.targetSdkVersion') ?: '34')
         kotlinVersion = "1.8.0"
-
         ndkVersion = "26.1.10909125"
     }
     repositories {
@@ -15,9 +14,9 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath('com.android.tools.build:gradle')
+        classpath('com.android.tools.build:gradle:8.0.0') // Specifik gradleversion
         classpath('com.facebook.react:react-native-gradle-plugin')
-        classpath('org.jetbrains.kotlin:kotlin-gradle-plugin')
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion") // Specifik version
     }
 }
 
@@ -38,9 +37,36 @@ allprojects {
         mavenCentral()
         maven { url 'https://www.jitpack.io' }
     }
+    // Anvend samme JVM target for alle projekter
     tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach {
         kotlinOptions {
             jvmTarget = "17"
+            apiVersion = "1.8"
+            languageVersion = "1.8"
+            freeCompilerArgs += ["-Xjvm-default=all"]
+        }
+    }
+}
+
+// Tilføj denne ekstra Kotlin konfiguration for at sikre konsistens
+subprojects {
+    afterEvaluate { subproject ->
+        if (subproject.hasProperty('android')) {
+            subproject.android {
+                compileOptions {
+                    sourceCompatibility JavaVersion.VERSION_17
+                    targetCompatibility JavaVersion.VERSION_17
+                }
+            }
+        }
+        if (subproject.plugins.hasPlugin('kotlin-android')) {
+            subproject.tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach {
+                kotlinOptions {
+                    jvmTarget = "17"
+                    apiVersion = "1.8"
+                    languageVersion = "1.8"
+                }
+            }
         }
     }
 }
